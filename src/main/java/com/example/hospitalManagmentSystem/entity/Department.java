@@ -2,10 +2,7 @@ package com.example.hospitalManagmentSystem.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.print.Doc;
 import java.util.HashSet;
@@ -16,6 +13,8 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@ToString
 public class Department {
 
     @Id
@@ -27,9 +26,11 @@ public class Department {
 
     @OneToOne
     @JoinColumn(nullable = false)
+    @ToString.Exclude
     private Doctor headDoctor;
 
     @ManyToMany
+    @ToString.Exclude
     private Set<Doctor> doctors = new HashSet<>();
 
 }

@@ -4,14 +4,16 @@ import com.example.hospitalManagmentSystem.entity.type.BloodGroupType;
 import lombok.*;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BloodGroupStats {
     private BloodGroupType bloodGroupType;
     private Long count;
-
-    public BloodGroupStats() {}  // required by Hibernate
-
-    public BloodGroupStats(BloodGroupType bloodGroupType, Long count) {
-        this.bloodGroupType = bloodGroupType;
-        this.count = count;
-    }
+//
+//    public BloodGroupStats() {}  // required by Hibernate
+//
+//    public BloodGroupStats(BloodGroupType bloodGroupType, Long count) {
+//        this.bloodGroupType = bloodGroupType;
+//        this.count = count;
+//    }
 }

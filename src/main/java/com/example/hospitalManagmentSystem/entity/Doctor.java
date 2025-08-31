@@ -1,10 +1,7 @@
 package com.example.hospitalManagmentSystem.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,6 +13,8 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@ToString
 public class Doctor {
 
     @Id
@@ -32,9 +31,13 @@ public class Doctor {
     private String email;
 
     @OneToMany(mappedBy = "doctor")
+    @ToString.Exclude
     private Set<Appointment> appointments = new HashSet<>();
 
 //    @OneToOne(mappedBy = "headDoctor")
 //    private Appointment appointment;
+
+    @ManyToMany(mappedBy = "doctors")
+    private Set<Department> departments = new HashSet<>();
 
 }

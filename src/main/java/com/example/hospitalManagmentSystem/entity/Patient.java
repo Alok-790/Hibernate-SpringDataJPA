@@ -3,9 +3,8 @@ package com.example.hospitalManagmentSystem.entity;
 import com.example.hospitalManagmentSystem.entity.type.BloodGroupType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.query.sql.internal.ParameterRecognizerImpl;
 
@@ -18,6 +17,8 @@ import java.util.Set;
 @ToString
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,11 +38,14 @@ public class Patient {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "patient_insurance")
+    @ToString.Exclude
     private Insurance insurance; // owning side
 
-    @OneToMany(mappedBy = "patient") // inverse side
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL) // inverse side
+    @ToString.Exclude
     private Set<Appointment> appointments = new HashSet<>();
+
 
 }

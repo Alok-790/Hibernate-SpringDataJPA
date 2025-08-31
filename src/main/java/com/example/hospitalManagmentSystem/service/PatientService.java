@@ -12,9 +12,6 @@ public class PatientService {
 
     private final PatientRepository patientRepository;
 
-    public PatientService(PatientRepository patientRepository) {
-        this.patientRepository = patientRepository;
-    }
 
     @Transactional
     public void testPatientTransaction() {
@@ -23,5 +20,12 @@ public class PatientService {
 
         System.out.println(p1+" & "+p2);
         System.out.println(p1==p2);
+    }
+
+    @Transactional
+    public void deletePatient(Long patientId){
+        Patient patient = patientRepository.findById(patientId).orElseThrow();
+
+        patientRepository.deleteById(patientId);
     }
 }

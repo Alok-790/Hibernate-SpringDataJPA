@@ -3,18 +3,18 @@ package com.example.hospitalManagmentSystem.dto;
 import lombok.*;
 
 @Data
-@Getter
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CPatientInfo {
     private Long id;
     private String name;
 
-    public CPatientInfo() {}  // required by Hibernate
-
-    public CPatientInfo(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+//    public CPatientInfo() {}  // required by Hibernate
+//
+//    public CPatientInfo(Long id, String name) {
+//        this.id = id;
+//        this.name = name;
+//    }
 
     /*public Long getId() { return id; }
     public String getName() { return name; }
