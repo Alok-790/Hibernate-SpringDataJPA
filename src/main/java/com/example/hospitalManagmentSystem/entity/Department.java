@@ -7,6 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.print.Doc;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -20,4 +24,12 @@ public class Department {
 
     @Column(nullable = false,unique = true,length = 100)
     private String name;
+
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private Doctor headDoctor;
+
+    @ManyToMany
+    private Set<Doctor> doctors = new HashSet<>();
+
 }

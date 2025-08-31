@@ -34,4 +34,7 @@ public class Doctor {
     @OneToMany(mappedBy = "doctor")
     private Set<Appointment> appointments = new HashSet<>();
 
+//    @OneToOne(mappedBy = "headDoctor")
+//    private Appointment appointment;
+
 }
