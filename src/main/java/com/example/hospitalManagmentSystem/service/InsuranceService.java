@@ -29,5 +29,25 @@ public class InsuranceService {
 
     }
 
+    @Transactional
+    public Insurance updateInsuranceOfAPatient(Insurance insurance,Long patientId){
+        Patient patient = patientRepository.findById(patientId).orElseThrow();
+
+        patient.setInsurance(insurance); // dirty patient
+        insurance.setPatient(patient); // optional done to maintain bidirectional consistency
+
+        return insurance;
+
+    }
+
+    @Transactional
+    public Patient removeInsuranceOfAPatient(Long patientId){
+        Patient patient = patientRepository.findById(patientId).orElseThrow();
+
+        patient.setInsurance(null); // dirty patient
+
+        return patient;
+    }
+
 
 }
